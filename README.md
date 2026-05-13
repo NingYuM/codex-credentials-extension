@@ -19,8 +19,6 @@ A Chrome extension that extracts the OAuth `access_token` from the current `chat
 
 ### 截图
 
-> 你可以把截图放到仓库里，例如 `docs/images/` 目录。
-
 #### 1. 安装扩展
 
 ![安装扩展截图](./docs/images/install-extension.png)
@@ -81,8 +79,6 @@ A Chrome extension that extracts the OAuth `access_token` from the current `chat
 - Displays account, plan, and expiration details
 
 ### Screenshots
-
-> You can store screenshots in the repository, for example under `docs/images/`.
 
 #### 1. Install the extension
 
