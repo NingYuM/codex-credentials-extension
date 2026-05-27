@@ -4,9 +4,9 @@
 
 # Codex 凭据导出器 / Codex Credentials Exporter
 
-> 一个用于从浏览器当前 `chatgpt.com` 登录态中提取 OAuth `access_token`、生成 Codex CLI `auth.json` 并复制到剪贴板的 Chrome 扩展。
+> 一个用于从浏览器当前 `chatgpt.com` 登录态中提取 OAuth `access_token`、生成 Codex CLI `auth.json` 并复制到剪贴板的 Chrome 扩展，跳过 Codex 登录阶段的手机号校验。
 >
-> A Chrome extension that extracts the OAuth `access_token` from the current `chatgpt.com` browser session, generates a Codex CLI `auth.json`, and copies it to the clipboard.
+> A Chrome extension that extracts the OAuth `access_token` from the current `chatgpt.com` browser session, generates a Codex CLI `auth.json`, and copies it to the clipboard,skipping the phone number verification during the Codex login process.
 
 ---
 
@@ -64,6 +64,10 @@
 - 当前生成结果不包含 `refresh_token`
 - 当 `access_token` 过期后，需要重新在扩展中执行一次导出
 - 使用前请确保当前浏览器中的 `chatgpt.com` 登录状态有效
+
+### 联系方式
+
+一起交流与学习，请联系：liu_zan@aliyun.com
 
 ### License
 
@@ -127,6 +131,10 @@
 - The output does not include a `refresh_token`
 - After the `access_token` expires, run the export again from the extension
 - Make sure your `chatgpt.com` session is valid before using the extension
+
+### Contact
+
+For further discussion and learning, please contact: liu_zan@aliyun.com
 
 ### License
 
