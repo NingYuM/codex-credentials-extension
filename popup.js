@@ -2,6 +2,7 @@
   'use strict';
 
   const grabButton = document.getElementById('grabButton');
+  const copyPreviewButton = document.getElementById('copyPreviewButton');
   const status = document.getElementById('status');
   const preview = document.getElementById('preview');
   const previewContent = document.getElementById('previewContent');
@@ -15,6 +16,11 @@
   function setBusy(isBusy) {
     grabButton.disabled = isBusy;
     grabButton.textContent = isBusy ? '正在抓取...' : '抓取并复制 auth.json';
+  }
+
+  function setPreviewVisible(isVisible) {
+    preview.hidden = !isVisible;
+    copyPreviewButton.hidden = !isVisible;
   }
 
   function formatExpiry(iso) {
@@ -53,13 +59,13 @@
   async function grabAndCopyAuth() {
     setBusy(true);
     setStatus('正在请求 chatgpt.com/api/auth/session ...', 'hint');
-    preview.hidden = true;
+    setPreviewVisible(false);
 
     try {
       const result = await builder.buildFromBrowser();
       const json = JSON.stringify(result.auth, null, 2);
       previewContent.textContent = json;
-      preview.hidden = false;
+      setPreviewVisible(true);
       await copyToClipboard(json);
 
       const lines = [
@@ -79,5 +85,19 @@
     }
   }
 
+  async function copyPreviewAuth(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      await copyToClipboard(previewContent.textContent);
+      setStatus('已复制当前预览内容。', 'ok');
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setStatus(message, 'error');
+    }
+  }
+
   grabButton.addEventListener('click', grabAndCopyAuth);
+  copyPreviewButton.addEventListener('click', copyPreviewAuth);
 })();
